@@ -211,7 +211,7 @@ ExitX(*) {
 }
 
 F4:: {
-    Reload
+    ReloadX
     sleep 1000
 }
 
