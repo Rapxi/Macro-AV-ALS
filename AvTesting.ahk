@@ -24,21 +24,25 @@ DllCall("CombineRgn", "ptr", hRgnFull, "ptr", hRgnFull, "ptr", hRgnHole, "int", 
 ; Apply region to the window
 DllCall("SetWindowRgn", "ptr", hwnd, "ptr", hRgnFull, "int", true)
 
-Taskgp := MyGui.Add("GroupBox", "w200 h400 cWhite", "Tasks")
-Taskgp.move(1400, 92, 120, 320)
+; Groupbox
+
+Taskgb := MyGui.Add("GroupBox", "w200 h400 cWhite", "Tasks")
+Taskgb.move(1400, 92, 120, 320)
 
 
-; Sidequests
+; Top Right Buttons
 
-ExitB := MyGui.Add("Picture", "w19 h-1", A_ScriptDir "\ExitButtonIcon.jpg")
+ExitB := MyGui.Add("Picture", "w19 h-1", A_ScriptDir "\Icons\ExitButtonIcon.jpg")
 ExitB.move(1525, 10, 20, 20)
 ExitB.OnEvent("Click", ExitX)
-MinimizeB := MyGui.Add("Picture", "w17.5 h-1", A_ScriptDir "\MinimizeButtonIcon.png")
+MinimizeB := MyGui.Add("Picture", "w17.5 h-1", A_ScriptDir "\Icons\MinimizeButtonIcon.png")
 MinimizeB.move(1400, 10, 20, 20)
 MinimizeB.OnEvent("Click", MinimizeX)
-ReloadB := MyGui.Add("Picture", "w17.5 h-1", A_ScriptDir "\ReloadButtonIcon.png")
+ReloadB := MyGui.Add("Picture", "w17.5 h-1", A_ScriptDir "\Icons\ReloadButtonIcon.png")
 ReloadB.move(1462, 10, 20, 20)
 ReloadB.OnEvent("Click", ReloadX)
+
+; MainMode Radio in Button
 
 MainModes := MyGui.Add("Button", "w100 h40 cWhite", "Main Mode")
 MainModes.move(1410, 122, 100, 30)
@@ -62,7 +66,7 @@ MainModesChoose(*) {
     BossRushR := NewGui.Add("Radio", "vChoice Group cWhite", "Boss Rush")
     BossRushR.Move(20, 20, 100, 40)
 
-    ; subsequent radios should NOT reuse vChoice — just create them and keep references
+    ; subsequent radios should NOT reuse vChoice, just create them and keep references
     InfinitieR := NewGui.Add("Radio", "cWhite", "Infinitie")
     InfinitieR.Move(130, 20, 100, 40)
 
@@ -149,6 +153,9 @@ BountyCB.SetFont("s10")
 Rift := MyGui.Add("Checkbox", "w150 h40 cWhite", "Rift")
 Rift.move(1410, 360, 90, 50)
 Rift.SetFont("s10")
+
+InstructionsGB := MyGui.Add("GroupBox", "w200 h400 cWhite", "Instructions")
+InstructionsGB := MyGui.Move(1400, 400, 120, 320)
 
 ReziseText := MyGui.Add("Text", "w150 h40 cWhite", "Press F1 to rezise Roblox")
 ReziseText.Move(1410, 440, 110 , 60)
