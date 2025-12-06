@@ -155,6 +155,26 @@ ReziseText.Move(1410, 440, 110 , 60)
 ReziseText.SetFont(, "Seoge UI")
 ReziseText.SetFont("s12")
 
+StartText := MyGui.Add("Text", "w150 h40 cWhite", "Press F2 to start the Macro")
+StartText.Move(1410, 500, 110 , 60)
+StartText.SetFont(, "Seoge UI")
+StartText.SetFont("s12")
+
+StopText := MyGui.Add("Text", "w150 h40 cWhite", "Press F3 to stop the Macro")
+StopText.Move(1410, 560, 110 , 60)
+StopText.SetFont(, "Seoge UI")
+StopText.SetFont("s12")
+
+RestartText := MyGui.Add("Text", "w150 h40 cWhite", "Press F4 to restart the Macro")
+RestartText.Move(1410, 620, 110 , 60)
+RestartText.SetFont(, "Seoge UI")
+RestartText.SetFont("s12")
+
+ShowText := MyGui.Add("Text", "w150 h40 cWhite", "Press F6 to Hide/Show the Macro")
+ShowText.Move(1410, 700, 110 , 60)
+ShowText.SetFont(, "Seoge UI")
+ShowText.SetFont("s12")
+
 MacroTXT := MyGui.Add("Text", "w300 h40 cWhite", "Macro")
 MacroTXT.move(730, 22, 90, 30)
 MacroTXT.SetFont("bold")
@@ -177,12 +197,22 @@ F1:: {
     ; Move and resize
     WinMove(x1, y1, x2 - x1, y2 - y1, "ahk_exe notepad.exe")
 }
+
+F2:: {
+    ; Start the Mango
+}
+
 F3:: {
     ExitApp
 }
 
 ExitX(*) {
     ExitApp
+}
+
+F4:: {
+    Reload
+    sleep 1000
 }
 
 F6:: {
