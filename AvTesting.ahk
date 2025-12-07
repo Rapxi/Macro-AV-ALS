@@ -26,8 +26,8 @@ DllCall("SetWindowRgn", "ptr", hwnd, "ptr", hRgnFull, "int", true)
 
 ; Groupbox
 
-Taskgb := MyGui.Add("GroupBox", "w200 h400 cWhite", "Tasks")
-Taskgb.move(1400, 92, 120, 320)
+TaskGB := MyGui.Add("GroupBox", "w200 h400 cWhite", "Tasks")
+TaskGB.move(1400, 92, 130, 320)
 
 
 ; Top Right Buttons
@@ -83,13 +83,13 @@ MainModesChoose(*) {
     PortalR.Move(230, 70, 100, 40)
 
     RaidR := NewGui.Add("Radio", "cWhite", "Raid")
-    RaidR.Move(20, 120, 100, 40)
+    RaidR.Move(20, 90, 100, 40)
 
     StoryR := NewGui.Add("Radio", "cWhite", "Story")
-    StoryR.Move(130, 120, 100, 40)
+    StoryR.Move(130, 90, 100, 40)
 
     WorldlineR := NewGui.Add("Radio", "cWhite", "Worldline")
-    WorldlineR.Move(230, 120, 100, 40)
+    WorldlineR.Move(230, 90, 100, 40)
 
     EventR := NewGui.Add("Radio", "cWhite", "Event")
     EventR.Move(20, 170, 100, 40)
@@ -132,68 +132,79 @@ MainModesChoose(*) {
 
 TChallangeCB := MyGui.Add("Checkbox", "w150 h40 cWhite", "Trait Challange")
 TChallangeCB.move(1410, 160, 90, 50)
-TChallangeCB.SetFont("s10")
+TChallangeCB.SetFont("s11")
 
 OChallangeCB := MyGui.Add("Checkbox", "w150 h40 cWhite", "Other Challange")
 OChallangeCB.move(1410, 200, 90, 50)
-OChallangeCB.SetFont("s10")
+OChallangeCB.SetFont("s11")
 
 DailyChallangeCB := MyGui.Add("Checkbox", "w150 h40 cWhite", "Daily Challange")
 DailyChallangeCB.move(1410, 240, 90, 50)
-DailyChallangeCB.SetFont("s10")
+DailyChallangeCB.SetFont("s11")
 
 WeeklyChallangeCB := MyGui.Add("Checkbox", "w150 h40 cffffff", "Weekly Challange")
 WeeklyChallangeCB.move(1410, 280, 90, 50)
-WeeklyChallangeCB.SetFont("s10")
+WeeklyChallangeCB.SetFont("s11")
 
 BountyCB := MyGui.Add("Checkbox", "w150 h40 cWhite", "Bounty")
 BountyCB.move(1410, 320, 90, 50)
-BountyCB.SetFont("s10")
+BountyCB.SetFont("s11")
 
 Rift := MyGui.Add("Checkbox", "w150 h40 cWhite", "Rift")
 Rift.move(1410, 360, 90, 50)
-Rift.SetFont("s10")
+Rift.SetFont("s11")
 
-InstructionsGB := MyGui.Add("GroupBox", "w200 h400 cWhite", "Instructions")
-InstructionsGB := MyGui.Move(1400, 400, 120, 320)
+InstructionsGB := MyGui.Add("GroupBox", "w200 h400 cWhite", "Instructions" )
+InstructionsGB.move(1400, 450, 135, 345)
+; Maybe add sometime, InstructionsGB.Opt("+Center")
 
 ReziseText := MyGui.Add("Text", "w150 h40 cWhite", "Press F1 to rezise Roblox")
-ReziseText.Move(1410, 440, 110 , 60)
-ReziseText.SetFont(, "Seoge UI")
-ReziseText.SetFont("s12")
+ReziseText.Move(1415, 470, 110 , 60)
+ReziseText.SetFont("bold")
+ReziseText.SetFont("s11")
 
 StartText := MyGui.Add("Text", "w150 h40 cWhite", "Press F2 to start the Macro")
-StartText.Move(1410, 500, 110 , 60)
-StartText.SetFont(, "Seoge UI")
-StartText.SetFont("s12")
+StartText.Move(1415, 530, 110 , 60)
+StartText.SetFont("bold")
+StartText.SetFont("s11")
 
 StopText := MyGui.Add("Text", "w150 h40 cWhite", "Press F3 to stop the Macro")
-StopText.Move(1410, 560, 110 , 60)
-StopText.SetFont(, "Seoge UI")
-StopText.SetFont("s12")
+StopText.Move(1415, 590, 110 , 60)
+StopText.SetFont("bold")
+StopText.SetFont("s11")
 
 RestartText := MyGui.Add("Text", "w150 h40 cWhite", "Press F4 to restart the Macro")
-RestartText.Move(1410, 620, 110 , 60)
-RestartText.SetFont(, "Seoge UI")
-RestartText.SetFont("s12")
+RestartText.Move(1415, 650, 110 , 60)
+RestartText.SetFont("bold")
+RestartText.SetFont("s11")
 
 ShowText := MyGui.Add("Text", "w150 h40 cWhite", "Press F6 to Hide/Show the Macro")
-ShowText.Move(1410, 700, 110 , 60)
-ShowText.SetFont(, "Seoge UI")
-ShowText.SetFont("s12")
+ShowText.Move(1415, 725, 110 , 60)
+ShowText.SetFont("bold")
+ShowText.SetFont("s11")
 
 MacroTXT := MyGui.Add("Text", "w300 h40 cWhite", "Macro")
 MacroTXT.move(730, 22, 90, 30)
 MacroTXT.SetFont("bold")
-MacroTXT.SetFont("s10")
+MacroTXT.SetFont("s12")
 
+; Github button
+
+GithubLink(*) {
+    Run "www.github.com/Rapxi"
+}
+
+GithubDirect := MyGui.Add("Button", "w300 h40 cWhite", "Github")
+GithubDirect.Move(200, 830, 85, 40)
+GithubDirect.OnEvent("Click", GithubLink)
+GithubDirect.SetFont("s12")
+GithubDirect.SetFont("bold")
 
 ; Start / make roblox resize
 F1:: {
-    ; Run Notepad
-    Run "notepad.exe"
-    WinWait "ahk_exe notepad.exe"
-    Sleep 500
+
+    If WinExist("ahk_exe notepad.exe") { 
+    Sleep 500 
     ; Get a window object
     win := WinExist("ahk_exe notepad.exe")
     ; Define coordinates2
@@ -203,13 +214,17 @@ F1:: {
     y2 := 1043
     ; Move and resize
     WinMove(x1, y1, x2 - x1, y2 - y1, "ahk_exe notepad.exe")
+    }
+    else {
+        MsgBox("Please Open Notepad")
+    }
 }
 
 F2:: {
     ; Start the Mango
 }
 
-F3:: {
+   F3:: {
     ExitApp
 }
 
@@ -223,8 +238,13 @@ F4:: {
 }
 
 F6:: {
-    WinShow "AvTesting.ahk"
-}
+    if WinActive("AvTesting.ahk")  {
+        WinHide("AvTesting.ahk")
+    }
+    else ;if WinMinimize("ahk_class AvTesting.ahk") {
+        ReloadX
+    }
+
 
 MinimizeX(*) {
     WinHide "AvTesting.ahk"
