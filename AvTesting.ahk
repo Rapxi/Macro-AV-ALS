@@ -45,20 +45,20 @@ ReloadB.OnEvent("Click", ReloadX)
 ; MainMode Radio in Button
 
 MainModes := MyGui.Add("Button", "w100 h40 cWhite", "Main Mode")
-MainModes.move(1410, 122, 100, 30)
+MainModes.move(1415, 120, 100, 30)
 MainModes.OnEvent("Click", MainModesChoose)
 MainModesChoose(*) {
-    configFile := A_ScriptDir "\mode_selection.txt"
+    configFile := A_ScriptDir "\ModeSettings\mode_selection.txt"
 
     NewGui := Gui()
     NewGui.Show("w300 h230")
     WinActivate "AvTesting.ahk"
-    NewGui.Opt("+ToolWindow -DPIScale -Caption +WsPopup")
+    NewGui.Opt("+ToolWindow -DPIScale -Caption")
     NewGui.BackColor := "0B1329"
 
     ; Save button
     ExitButton := NewGui.Add("Button", "w100 h40 cWhite", "Save")
-    ExitButton.Move(100, 180, 100, 40)
+    ExitButton.Move(120, 215, 90, 35)
     ExitButton.OnEvent("Click", SaveChoice)
 
     ; === Radio Buttons ===
@@ -83,18 +83,24 @@ MainModesChoose(*) {
     PortalR.Move(230, 70, 100, 40)
 
     RaidR := NewGui.Add("Radio", "cWhite", "Raid")
-    RaidR.Move(20, 90, 100, 40)
+    RaidR.Move(20, 120, 100, 40)
 
     StoryR := NewGui.Add("Radio", "cWhite", "Story")
-    StoryR.Move(130, 90, 100, 40)
+    StoryR.Move(130, 120, 100, 40)
 
     WorldlineR := NewGui.Add("Radio", "cWhite", "Worldline")
-    WorldlineR.Move(230, 90, 100, 40)
+    WorldlineR.Move(230, 120, 100, 40)
 
     EventR := NewGui.Add("Radio", "cWhite", "Event")
     EventR.Move(20, 170, 100, 40)
 
-    radios := [BossRushR, InfinitieR, DungeonR, LegendStageR, OdyseeyR, PortalR, RaidR, StoryR, WorldlineR, EventR]
+    Something1R := NewGui.Add("Radio", "cWhite", "something1")
+    Something1R.Move(130, 170, 100, 40)
+
+    Something2R := NewGui.Add("Radio", "cWhite", "something1")
+    Something2R.Move(230, 170, 100, 40)
+
+    radios := [BossRushR, InfinitieR, DungeonR, LegendStageR, OdyseeyR, PortalR, RaidR, StoryR, WorldlineR, EventR, Something1R, Something2R]
 
     ; Load saved selection if file exists
     if FileExist(configFile) {
