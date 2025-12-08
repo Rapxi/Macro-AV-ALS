@@ -193,7 +193,6 @@ MacroTXT := MyGui.Add("Text", "w300 h40 cWhite", "Macro")
 MacroTXT.move(730, 22, 90, 30)
 MacroTXT.SetFont("bold")
 MacroTXT.SetFont("s12")
-
 ; Github button
 
 GithubLink(*) {
@@ -206,7 +205,19 @@ GithubDirect.OnEvent("Click", GithubLink)
 GithubDirect.SetFont("s12")
 GithubDirect.SetFont("bold")
 
-; Start / make roblox resize
+
+TeamsButton := MyGui.Add("Button", "w300 h40 cWhite", "Teams" ) 
+TeamsButton.Move(35, 90, 120, 40) 
+Teamsbutton.OnEvent("Click", TeamsGui(*))
+
+TeamsGui(*) { 
+    TeamsGui := Gui() 
+    TeamsGui.Show("w500 h300") 
+    TeamsGui.Opt("+ToolWindow -DPIScale -Caption") 
+    TeamsGui.BackColor := "0B1329" 
+} 
+
+
 F1:: {
 
     If WinExist("ahk_exe notepad.exe") { 
