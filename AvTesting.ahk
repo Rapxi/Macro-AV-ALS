@@ -208,14 +208,59 @@ GithubDirect.SetFont("bold")
 
 TeamsButton := MyGui.Add("Button", "w300 h40 cWhite", "Teams" ) 
 TeamsButton.Move(35, 90, 120, 40) 
-Teamsbutton.OnEvent("Click", TeamsGui(*))
+Teamsbutton.OnEvent("Click", TeamsGui)
 
 TeamsGui(*) { 
-    TeamsGui := Gui() 
-    TeamsGui.Show("w500 h300") 
-    TeamsGui.Opt("+ToolWindow -DPIScale -Caption") 
-    TeamsGui.BackColor := "0B1329" 
+    TeamGui := Gui() 
+    ExitButton1 := TeamGui.add("Button", "w100 h50", "Save")
+    ExitButton1.OnEvent("Click", ExitTeamsGUI())
+    TeamGui.Show("w1050 h575")
+    ExitButton1.Move(475, 55  0)
+    Unit1GB := TeamGui.add("GroupBox", "w150 h500 cWhite", "Unit 1")
+    Unit1GB.Move(25, 25)
+    Unit1GB.SetFont("s12")
+    Unit1GB.SetFont("Bold") 
+    Unit1nametext := TeamGui.add("Text", "cWhite", "Unit name")
+    Unit1nameedit := TeamGui.add("Edit")
+    Unit1nametext.SetFont("S12")
+    Unit1nametext.SetFont("bold")
+    Unit1nametext.Move(50, 50, 100, 25)
+    Unit1nameedit.Move(50, 75, 100, 25)
+    Unit2GB := TeamGui.add("GroupBox", "w150 h500 cWhite", "Unit 2")
+    Unit2GB.Move(200, 25)
+    Unit2GB.SetFont("s12")
+    Unit2GB.SetFont("Bold") 
+    Unit3GB := TeamGui.add("GroupBox", "w150 h500 cWhite", "Unit 3")
+    Unit3GB.Move(375, 25)
+    Unit3GB.SetFont("s12")
+    Unit3GB.SetFont("Bold") 
+    Unit4GB := TeamGui.add("GroupBox", "w150 h500 cWhite", "Unit 4")
+    Unit4GB.Move(550, 25)
+    Unit4GB.SetFont("s12")
+    Unit4GB.SetFont("Bold") 
+    Unit5GB := TeamGui.add("GroupBox", "w150 h500 cWhite", "Unit 5")
+    Unit5GB.Move(725, 25)
+    Unit5GB.SetFont("s12")
+    Unit5GB.SetFont("Bold") 
+    Unit6GB := TeamGui.add("GroupBox", "w150 h500 cWhite", "Unit 6")
+    Unit6GB.Move(900, 25)
+    Unit6GB.SetFont("s12")
+    Unit6GB.SetFont("Bold") 
+    ; 5 name, placement, upgrade, ability, priority
+    ; 25, 100, 25, 100, 25, 100, 25, 100, 25, 100, 25, 100 ; 25 space between each slot
+    ; 25, 75, 25, 75, 25, 75, 25, 75, 25, 75
+    TeamGui.Opt("+ToolWindow -DPIScale -Caption") 
+    TeamGui.BackColor := "0B1329" 
+    ExitTeamsGUI() {
+        if (TeamGui) {
+            TeamGui.destroy()
+        }
+    }
+    
 } 
+
+
+
 
 
 F1:: {
